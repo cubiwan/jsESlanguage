@@ -1,0 +1,102 @@
+<html>
+<head>
+<script src="jsESnumber.js" charset="UTF-8"></script>
+<script src="jsESgender.js" charset="UTF-8"></script>
+<script src="jsESdespective.js" charset="UTF-8"></script>
+<script src="jsESaugmentative.js" charset="UTF-8"></script>
+<script src="jsESdiminutive.js" charset="UTF-8"></script>
+<script>
+var number = new jsESnumber();
+var gender = new jsESgender();
+var despective = new jsESdespective();
+var augmentative = new jsESaugmentative();
+var diminutive = new jsESdiminutive();
+
+function pluralize(){
+  var word = document.getElementById('word').value;
+  document.getElementById('result').value = number.pluralOf(word);
+}
+
+function singularize(){
+  var word = document.getElementById('word').value;
+  document.getElementById('result').value = number.singularOf(word);
+}
+
+function singularOrPlural(){
+  var word = document.getElementById('word').value;
+  var result = number.singularOrPlural(word);
+  if(result == -1){
+    document.getElementById('result').value = "singular";
+  } else if(result == 1){
+    document.getElementById('result').value = "plural";
+  } else if(result == 0) {
+    document.getElementById('result').value = "invariant";
+  } else{
+    document.getElementById('result').value = "no idea";
+  }
+}
+
+function feminize(){
+  var word = document.getElementById('word').value;
+  document.getElementById('result').value = gender.feminineOf(word);
+}
+
+function masculinize(){
+  var word = document.getElementById('word').value;
+  document.getElementById('result').value = gender.masculineOf(word);
+}
+
+function masculineOrFeminine(){
+  var word = document.getElementById('word').value;
+  var result = gender.masculineOrFeminine(word);
+  if(result == -1){
+    document.getElementById('result').value = "masculine";
+  } else if(result == 1){
+    document.getElementById('result').value = "feminine";
+  } else if(result == 0) {
+    document.getElementById('result').value = "no gender";
+  } else{
+    document.getElementById('result').value = "no idea";
+  }
+}
+
+function despectiveOf(){
+  var word = document.getElementById('word').value;
+  document.getElementById('result').value = despective.despectiveOf(word);
+}
+
+function augmentativeOf(){
+  var word = document.getElementById('word').value;
+  document.getElementById('result').value = augmentative.augmentativeOf(word);
+}
+
+function diminutiveOf(){
+  var word = document.getElementById('word').value;
+  document.getElementById('result').value = diminutive.diminutiveOf(word);
+}
+
+</script>
+</head>
+<body>
+<h1>jsESinflection: jsESnumber, jsESgender, jsESaugmentative, jsESdiminutive, jsESdespective</h1>
+Word: <input id="word"> => <input id="result" readonly="readonly">
+<br>
+<br>
+Number:
+<button onclick="pluralize()">Pluralize</button>
+<button onclick="singularize()">Singularize</button>
+<button onclick="singularOrPlural()">Singular or plural?</button>
+<br>
+<br>
+Gender:
+<button onclick="feminize()">Feminize</button>
+<button onclick="masculinize()">Masculinize</button>
+<button onclick="masculineOrFeminine()">Masculine or feminine?</button>
+<br>
+<br>
+Others:
+<button onclick="despectiveOf()">Despective</button>
+<button onclick="augmentativeOf()">Augmentative</button>
+<button onclick="diminutiveOf()">Diminutive</button>
+</body>
+</html>
