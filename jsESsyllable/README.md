@@ -28,4 +28,4 @@ return the position of stress syllable
 
 ## Demo
 
-Test in this [demo](https://cubiwan.github.io/jsESsyllable/index.html)
+Test in this [demo](https://cubiwan.github.io//jsESlanguage/jsESsyllable/index.html)
