@@ -142,4 +142,4 @@ add a pair of words (normal, despective) to dictionary of exceptions.
 
 ## Demo
 
-Test in this [demo](https://cubiwan.github.io/jsESinflection/index.html)
+Test in this [demo](https://cubiwan.github.io/jsESlanguage/jsESinflection/index.html)
