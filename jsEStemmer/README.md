@@ -146,5 +146,5 @@ console.log(stemmer.stemWord("jardineria")); //jardineri (stemmer)
 
 ## Demo
 
-Test jsEStemmer in this [demo](https://cubiwan.github.io/jsEStemmer/index.html)
+Test jsEStemmer in this [demo](https://cubiwan.github.io/jsESlanguage/jsEStemmer/index.html)
 
