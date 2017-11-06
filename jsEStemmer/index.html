@@ -1,0 +1,108 @@
+<html>
+<head>
+  <script src="jsEStemmer.js"></script>
+  <script>
+    var stemmer = new jsEStemmer.stemmer();
+
+    function stemText(){
+      var text = document.getElementById("text").value;
+      var distance = document.getElementById("distance").value;
+      var max = document.getElementById("max").value;
+      var number = document.getElementById("number").value;
+      var percentage = document.getElementById("percentage").value;
+
+      try{
+        distance = distance/100;
+      } catch(e) {
+        distance = 0;
+      }
+
+      try{
+        percentage = percentage/100;
+      } catch(e) {
+        percentage = 0.05;
+      }
+
+      var lemmas = stemmer.stemText(text, distance);
+      var lemmas = stemmer.filterLemmas(lemmas, max, number, percentage);
+
+      var result = "<table><tr><th>Lemma</th><th>n</th><th>%</th></tr>";
+      for(var i = 0; i < lemmas.length; ++i){
+        result += "<tr><td>"+lemmas[i].lemmas+"</td><td>"+lemmas[i].number+"</td><td>"+lemmas[i].percentage*100+"</td></tr>";
+      }
+      result += "</table>";
+      result += "<br><br>";
+      result += stemmer.arrayLemmasToArrayStrings(lemmas).toString();
+
+      document.getElementById("result").innerHTML = result;
+
+      return lemmas;
+    }
+
+    function distance(){
+      var word1 = document.getElementById("word1").value;
+      var word2 = document.getElementById("word2").value;
+      var lemma1 = stemmer.stemWord(word1);
+      var lemma2 = stemmer.stemWord(word2);
+      var distance = stemmer.distance(lemma1, lemma2);
+
+      document.getElementById("word1").value = lemma1;
+      document.getElementById("word2").value = lemma2;
+      document.getElementById("distanceLemmas").value = distance;
+    }
+
+    function stemWord(){
+      var word = document.getElementById("word").value;
+      var lemma = stemmer.stemWord(word);
+
+      document.getElementById("stemmedWord").value = lemma;
+    }
+
+    function stemPhrase(){
+      var phrase = document.getElementById("phrase").value;
+      var lemmas = stemmer.stemText(phrase);
+      return lemmas;
+    }
+
+
+
+  </script>
+</head>
+<body>
+<h1>jsEStemmer   </h1>
+<h4>Stemmer for spanish texts    <a href="https://github.com/cubiwan/jsEStemmer">(Repository)</a> </h4>
+
+
+<h3>Stem word:</h3>
+<input id="word">
+<input type ="button" value="Stem" onclick="stemWord()" >
+=
+<input id="stemmedWord" readonly="readonly">
+<br>
+<h3>Calculate lemmas and distance of two words:</h3>
+<input id="word1">
+-
+<input id="word2">
+<input type ="button" value="Distance" onclick="distance()" >
+=
+<input id="distanceLemmas" readonly="readonly">
+<br>
+<br>
+
+<h3>Stem text:</h3>
+<textarea rows="40" cols="100" id="text">
+</textarea>
+<br>
+Group distance between lemmas (0-100): <input id="distance" value ="25" size="4"> %
+<br>
+Select the first <input id="max" value ="10" size="4">
+and appers at least  <input id="number" value ="4" size="4"> times
+and represent  at least <input id="percentage" value ="1" size="4"> % of words
+<input type ="button" value="Stem" onclick="stemText()" >
+<br>
+<div id="result"></div>
+
+
+</body>
+
+</html>
