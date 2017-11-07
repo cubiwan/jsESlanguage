@@ -1,13 +1,13 @@
 # jsESlanguage
 Tools for process Spanish language
 
-###jsESinflection: 
+### jsESinflection: 
   Spanish inflections
 
-###jsESsyllable:
+### jsESsyllable:
 Spanish syllables division
 
-###jsEStemmer:
+### jsEStemmer:
 Stemmer for spanish. Not only stem words too remove stop words, group similar lemmas and filter results.
 
 
