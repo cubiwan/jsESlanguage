@@ -52,7 +52,7 @@ _distanceSimilar_: if distance between two lemmas are less than distanceSimilar 
 ```js
 filterLemmas(lemmas, max, number, percentage)
 ```
-Take and array of lemmas(structure) and return an array of lemmas(structure) filtered
+Take an array of lemmas(structure) and return an array of lemmas(structure) filtered
 
 _lemmas_: array of lemmas(structure)
 
@@ -78,10 +78,21 @@ calculate distance (0..1) between two lemmas (strings)
 compareArrayOfLemmas(a, b, threshold)
 ```  
 Compare two array of lemmas.
+
  _a_: array of lemmas
+ 
 _b_: array of lemmas
+
 _threshold_: as max distance between lemmas
+
 return similarity in (0..1) 1 more similar than 0
+
+```js
+isStopWord(word)
+```  
+Return true if word is a stopword
+
+_word_: word to compare with the stopwords
 
 ### Lemma structure
 
