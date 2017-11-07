@@ -111,6 +111,12 @@ exports.stemmer = function(dictionary){
       return similars*2/(a.length+b.length);
   }
 
+  /*return true if word is a stopword*/
+  this.isStopWord = function(word){
+    var cleanWord = cleanCharacters(word);
+    return removeStopwords([cleanWord]).length == 0;
+  }  
+  
   /*lemma strtucture*/
   function Lemma(){
     this.lemmas = []; //list of similar lemmas
