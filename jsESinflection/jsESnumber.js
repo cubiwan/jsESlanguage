@@ -106,12 +106,20 @@ function jsESnumber(){
   singularRegs.push(/(.*oide)s$/);
   singularReplaces.push('$1');
 
-  //s ->
-  singularRegs.push(/(.*)s$/);
+  //cines -> cine
+  singularRegs.push(/(.*cine)s$/);
   singularReplaces.push('$1');
-
+  
+  //eines -> eine
+  singularRegs.push(/(.*eine)s$/);
+  singularReplaces.push('$1');
+  
   //es ->
   singularRegs.push(/(.*)es$/);
+  singularReplaces.push('$1');
+  
+  //s ->
+  singularRegs.push(/(.*)s$/);
   singularReplaces.push('$1');
 
 
