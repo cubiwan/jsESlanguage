@@ -93,11 +93,6 @@ function jsESnumber(){
   singularRegs.push(/(^.[aeiou])ses$/);
   singularReplaces.push('$1s');
 
-  //^[áéíóú] +[aeiou] +s -> s
-  //llana +s -> s
-  singularRegs.push(/([^áéíóú]*[aeiou])s$/);
-  singularReplaces.push('$1');
-
   //esdrujula +s -> s
   singularRegs.push(/([áéíóú].*[aeiou].*[aeiou].*s)$/);
   singularReplaces.push('$1');
@@ -114,8 +109,17 @@ function jsESnumber(){
   singularRegs.push(/(.*eine)s$/);
   singularReplaces.push('$1');
   
+  //dades -> dad
+  singularRegs.push(/(.*dad)es$/);
+  singularReplaces.push('$1');  
+  
   //es ->
   singularRegs.push(/(.*)es$/);
+  singularReplaces.push('$1');
+  
+  //^[áéíóú] +[aeiou] +s -> s
+  //llana +s -> s
+  singularRegs.push(/([^áéíóú]*[aeiou])s$/);
   singularReplaces.push('$1');
   
   //s ->
@@ -188,13 +192,15 @@ function jsESnumber(){
   this.addException("o", "oes");
   this.addException("u", "ues");
   this.addException("el", "los");
+  this.addException("si", "sies");
+  this.addException("sí", "síes");
+  this.addException("no", "noes");
   this.addException("este", "estos");
   this.addException("ese", "esos");
   this.addException("equel", "aquellos");
   this.addException("álbum", "álbumes");
   this.addException("imán" , "imanes");
   this.addException("yo" , "yoes");
-  this.addException("no" , "noes");
   this.addException("hipérbaton", "hipérbatos");
   this.addException("champú", "champús");
   this.addException("menú", "menús");
@@ -203,6 +209,9 @@ function jsESnumber(){
   this.addException("rey", "reyes");
   this.addException("ley", "leyes");
   this.addException("buey", "bueyes");
+  this.addException("jersey", "jerséis");
+  this.addException("panty", "pantis");  
+  this.addException("vals", "valses");  
 
   //invariantes
   this.addException("virus", "virus");
@@ -245,6 +254,7 @@ function jsESnumber(){
   this.addException("abrelatas", "abrelatas");
   this.addException("limpiabotas", "limpiabotas");
   this.addException("cuelgacapas", "cuelgacapas");
+  this.addException("pasapurés", "pasapurés");
   this.addException("parabrisas", "parabrisas");
   this.addException("parachoques", "parachoques");
   this.addException("portaaviones", "portaaviones");
@@ -259,5 +269,6 @@ function jsESnumber(){
   this.addException("miércoles", "miércoles");
   this.addException("jueves", "jueves");
   this.addException("viernes", "viernes");
+  this.addException("tórax", "tórax");
 
 }
