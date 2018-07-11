@@ -15,13 +15,13 @@ function jsESaugmentative(){
   augmentativeRegs.push(/(.*)ces$/);
   augmentativeReplaces.push('$1sazos');
 
-  //[aá]s -> +uza
+  //[aá]s -> +azas
   augmentativeRegs.push(/(.*)[aá]s$/);
   augmentativeReplaces.push('$1azas');
 
-  //[eéiíoóuú]s -> +uzo
+  //[eéiíoóuú]s -> +azos
   augmentativeRegs.push(/(.*)[eéiíoóuú]s$/);
-  augmentativeReplaces.push('$1sazos');
+  augmentativeReplaces.push('$1azos');
 
   //triz -> +uza
   augmentativeRegs.push(/(.*tri)z$/);
