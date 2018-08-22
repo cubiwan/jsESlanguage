@@ -35,7 +35,7 @@ replace.add('Ë','Ï');
 replace.add('Ö','Ï');
 replace.add('Ü','Ï');
 
-function replace(){
+function replaceText(){
   var text = document.getElementById('text').value;
   var result = replace.replace(text);
   document.getElementById('result').value = result;
@@ -48,6 +48,6 @@ Text: <input id="text"> <br>
 Result: <input id="result" readonly="readonly">
 <br>
 <br>
-<button onclick="replace()">Replace</button>
+<button onclick="replaceText()">Replace</button>
 </body>
 </html>
