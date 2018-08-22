@@ -1,18 +1,25 @@
 function jsESreplace() {
     var replaces = [];
-    this.defaultLetter = null;
+    var defaultReplace;
     
     this.add = function(letter, replace){
-        replaces[letter] = replace;
+        var length = letter.length;
+        for(var i = 0; i < length; ++i){
+            replaces[letter[i]] = replace;
+        }
+    }
+    
+     this.setDefault = function(replace){
+        defaultReplace = replace;
     }
 
     function replaceLetter(letter){
        var result = replaces[letter];
-       if(result){
+       if(result != undefined){
          return result;
        }else{
-           if(this.defaultLetter){
-               return this.defaultLetter;
+           if(defaultReplace != undefined){
+               return defaultReplace;
            } else {
                return letter;
            }
