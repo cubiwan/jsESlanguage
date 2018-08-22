@@ -9,33 +9,12 @@ replace.add('a','i');
 replace.add('e','i');
 replace.add('o','i');
 replace.add('u','i');
+replace.add('áéóú','í');
+replace.add('üÜ','');
+replace.add('AEOU','I');
+replace.add('ÁÉÓÚ','Í');
 
-replace.add('á','í');
-replace.add('é','í');
-replace.add('ó','í');
-replace.add('ú','í');
-
-replace.add('ä','i');
-replace.add('ë','i');
-replace.add('ö','i');
-replace.add('ü','i');
-
-replace.add('A','I');
-replace.add('E','I');
-replace.add('O','I');
-replace.add('U','I');
-
-replace.add('Á','Í');
-replace.add('É','Í');
-replace.add('Ó','Í');
-replace.add('Ú','Í');
-
-replace.add('Ä','Ï');
-replace.add('Ë','Ï');
-replace.add('Ö','Ï');
-replace.add('Ü','Ï');
-
-function replaceText(){
+function replaceText(){  
   var text = document.getElementById('text').value;
   var result = replace.replace(text);
   document.getElementById('result').value = result;
