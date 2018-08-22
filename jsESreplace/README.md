@@ -1,5 +1,5 @@
 # jsESreplace
-Replace letters
+Replace all letters in one iteration
 
 ## Load
 
