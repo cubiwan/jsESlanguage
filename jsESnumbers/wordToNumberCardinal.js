@@ -1,4 +1,4 @@
-function wordsToNumberOrdinal(){
+function wordsToNumberCardinal(){
 
     this.transalate = function(text){
         text = cleanLetters(text)
