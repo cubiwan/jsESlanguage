@@ -38,10 +38,16 @@ function wordsToNumberCardinal(){
         return [intNumber, decimalNumber];
     }
     function cardinal2number(text){
-
+        var sign = 1;
         var number = 0;
         var textLengh = text.length;
         var oldTextLengh;
+
+        if(text.startsWith("menos")){
+            sign = -1;
+            text = text.substring("menos".length);
+        }
+
         do{
             oldTextLengh = textLengh;
 
@@ -176,6 +182,9 @@ function wordsToNumberCardinal(){
             } else if(text.startsWith("un")){
                 number += 1;
                 text = text.substring("un".length); 
+            } else if(text.startsWith("una")){
+                number += 1;
+                text = text.substring("una".length); 
             } else if(text.startsWith("millon")){
                 number *= 1000000;
                 text = text.substring("millon".length); 
@@ -196,7 +205,7 @@ function wordsToNumberCardinal(){
             textLengh = text.length;
             console.log(text);
         }while(oldTextLengh != textLengh)
-    return number;
+    return number*sign;
     }
 
 
@@ -338,7 +347,10 @@ function wordsToNumberCardinal(){
                 text = text.substring("nueve".length); 
             } else if(text.startsWith("una")){
                 number += 1;
-                text = text.substring("una".length); 
+                text = text.substring("una".length);
+            } else if(text.startsWith("un")){
+                number += 1;
+                text = text.substring("un".length);  
             } else if(text.startsWith("decima")){
                 decimal *= 10;
                 text = text.substring("millonesima".length); 
