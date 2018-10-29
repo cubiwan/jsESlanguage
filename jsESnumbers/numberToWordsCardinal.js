@@ -80,6 +80,7 @@ function numberToWordsCardinal(){
         }
     }
 
+
     function s(number){
         if(number > 1){
             return "s";
@@ -100,23 +101,51 @@ function numberToWordsCardinal(){
         return " con ";        
     }
 
-    var decimalNames = [" décima ", " centésima ", " milésima ", " diezmilésima "," cienmilésima ", " millonésima ", " diezmillonésima ", " cienmillonésima ", " billonésima "];
+    var decimalNames = [" décima", " centésima", " milésima", " diezmilésima"," cienmilésima", " millonésima", " diezmillonésima", " cienmillonésima", " billonésima"];
     var sectionNames = ["", " mil ", " millones ", " mil ", " billones ", " mil ", " trillones ", " mil ", " cuatrillones ", " mil ", " quintillones ", " mil "];
 
     this.translate = function(intPart, decPart, femenine){        
         intPart += "";
+        intPart = intPart.trim();
       
         var text = translateInteger(intPart, femenine);
         text = text.trim();
         if(decPart){
             decPart += "";
-            text += con() + translateDecimal(decPart);
+            decPart = decPart.trim();
+            text += translateDecimal(decPart);
+        }
+
+        return replaces(text);
+    }
+
+    function replaces(text){
+        text = text.replace("uno millones", "un millón");
+        text = text.replace("uno mil", "un mil");
+        text = text.replace("uno billones", "un billón");
+        text = text.replace("uno trillones", "un trillón");
+        text = text.replace("uno cuatrillones", "un cuatrillón");
+        text = text.replace("uno quintillones", "un quintillón");
+        text = text.replace("una millones", "un millón");
+        text = text.replace("una mil", "un mil");
+        text = text.replace("una billones", "un billón");
+        text = text.replace("una trillones", "un trillón");
+        text = text.replace("una cuatrillones", "un cuatrillón");
+        text = text.replace("una quintillones", "un quintillón");
+        text = text.replace("veintidos", "veintidós");
+        text = text.replace("veintitres", "veintitrés");
+        text = text.replace("veintiseis", "veintiséis");
+        if(text.startsWith("un mil")){
+            text = text.replace("un mil", "mil");
         }
         return text;
     }
 
     function translateInteger(number, femenine){    
         var text = "";
+        if(number == "0"){
+            return "cero";
+        }
         number = number.trim();
         if(number.startsWith("-")){
             number = number.substring(1);
@@ -135,7 +164,9 @@ function numberToWordsCardinal(){
     }
 
     function translateDecimal(number){
-        var total = translateInteger(number, true) + decimalNames[number.length-1] + s(number);
+        if(number == "0")
+            return "";
+        var total = con() + translateInteger(number, true) + decimalNames[number.length-1] + s(number);
         return total;
     }
 
