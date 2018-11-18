@@ -1,4 +1,4 @@
-function numberToWordsCardinal(){
+function jsESnumberToWordsCardinal(){
 
     function unidades(num, femenine){
         switch(num){
