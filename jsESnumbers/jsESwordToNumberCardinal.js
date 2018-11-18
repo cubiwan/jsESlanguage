@@ -1,5 +1,5 @@
 
-function wordsToNumberCardinal(){
+function jsESwordsToNumberCardinal(){
 
     this.transalate = function(text){
         text = cleanLetters(text)
