@@ -15,10 +15,17 @@ var replace = new jsESreplace();
 ```js
 replace.add(letter, replace);
 ```
-Indicates who letters are replace  
+Indicates letters to be replace  
 *letter* - Letter/letters to be replace 
 *replace* - Letter that replaces 
-return array of syllables (string)
+
+```js
+replace.addMultiples(letter, replace);
+```
+Indicates multiples letters to be replace replace 
+*letter* - (String) Letter/letters to be replace 
+*replace* - (String) Letter that replaces 
+letter[i] will be replace by replace[i]
 
 ```js
 replace.replace(text);
