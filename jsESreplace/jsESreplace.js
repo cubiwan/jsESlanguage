@@ -25,6 +25,16 @@ function jsESreplace() {
            }
        }
     }
+    
+    this.addMultiples = function(letter, replace){
+        var length = letter.length;
+        if(length != replace.length){
+            return false;
+        }
+        for(var i = 0; i < length; ++i){
+            replaces[letter[i]] = replace[i];
+        }
+    }
 
     this.replace = function(str){
         var length = str.length;
