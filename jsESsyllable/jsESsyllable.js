@@ -58,7 +58,7 @@ function jsESsyllable(){
   //word - Word to divide (string)
   //return array of syllables (string)
   this.divide = function(word){
-    word = word.toLowerCase();
+    word = word.toLowerCase().trim();    
     var cutPosition = 0;
     var syllables = [];
     var finalSyllables = [];
@@ -93,11 +93,11 @@ function jsESsyllable(){
           }
 
           word = word.substring(m.length-1);
-          console.log("regexStep1: "+i+"   m: "+m+"   head: "+head+"   word: "+word+"    cutPosition: "+cutPosition);
+          //console.log("regexStep1: "+i+"   m: "+m+"   head: "+head+"   word: "+word+"    cutPosition: "+cutPosition);
         }
       }
     }
-    console.log(syllables);
+    //console.log(syllables);
 
     //STEP 2
     for(var s = 0; s < syllables.length; ++s){
@@ -115,12 +115,12 @@ function jsESsyllable(){
             finalSyllables.push(sillable.substring(0,cutPosition));
             finalSyllables.push(sillable.substring(cutPosition));
           }
-          console.log("regexStep2: "+i+"   m: "+match[0]+"   sillable: "+sillable+"    cutPosition: "+cutPositionsStep2[i]);
+          //console.log("regexStep2: "+i+"   m: "+match[0]+"   sillable: "+sillable+"    cutPosition: "+cutPositionsStep2[i]);
           break;
         }
       }
     }
-    console.log(finalSyllables);
+    //console.log(finalSyllables);
     return finalSyllables;
   }
 
@@ -135,17 +135,17 @@ function jsESsyllable(){
     //accent mark?
     for(var i = 0; i < syllables.length; ++i){
       if(syllables[i].match(/[áéíóú]/)){
-        console.log("tilde: "+i);
+        //console.log("tilde: "+i);
         return i;
       }
     }
 
     //no accent mark
     if(syllables[syllables.length-1].match(/.*[nsaeiou]$/)){
-      console.log("no tilde, end with 'nsaeiou'");
+      //console.log("no tilde, end with 'nsaeiou'");
       return syllables.length-2;
     } else {
-      console.log("no tilde, no end with 'nsaeiou'");
+      //console.log("no tilde, no end with 'nsaeiou'");
       return syllables.length-1;
     }
   }
