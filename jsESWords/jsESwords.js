@@ -6,6 +6,15 @@ function jsESWords(letters){
         return text.trimEnd().length;
     }
 
+    this.spaces = function(text){
+        var spaces = text.trimEnd().match(/\s/g);
+        if(spaces){
+            return spaces.length;
+        } else {
+            return 0;
+        }
+    }
+
     this.words = function(text){        
         var words = [];
         while ((word = regExp.exec(text)) !== null) {
