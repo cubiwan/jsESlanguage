@@ -1,6 +1,3 @@
-
-
-
 function jsESsyllable(){
     var regexStep1 = [];
     var cutPositionsStep1 = [];
