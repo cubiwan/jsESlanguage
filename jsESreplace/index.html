@@ -1,9 +1,11 @@
 <html>
 <head>
-<script src="jsESreplace.js" charset="UTF-8"></script>
+  <meta charset="UTF-8">
+</head>
 
-<script>
-var replace = new jsESreplace();
+<script type="module" charset="UTF-8">
+import {jsESreplace} from './jsESreplace.js'
+window.replace = new jsESreplace();
 
 replace.add('a','i');
 replace.add('e','i');
@@ -13,7 +15,9 @@ replace.add('áéóú','í');
 replace.add('üÜ','');
 replace.add('AEOU','I');
 replace.add('ÁÉÓÚ','Í');
+</script>
 
+<script>
 function replaceText(){  
   var text = document.getElementById('text').value;
   var result = replace.replace(text);
