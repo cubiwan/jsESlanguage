@@ -1,0 +1,51 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<script type="module" charset="UTF-8">
+    import * as jsESnumbers from './jsESnumbers.js';
+    window.jsESnumbers = jsESnumbers;
+</script>
+
+<script>
+
+    function writeResult(text){
+        document.getElementById("result").innerText = text;
+    }
+
+    function getInput(){
+        return document.getElementById("text").value;
+    }
+
+    function buttonCardinalToWords(){        
+        writeResult(jsESnumbers.cardinalToWords(getInput()));
+    }
+
+    function buttonWordsToCardinal(){        
+        writeResult(jsESnumbers.wordsToCardinal(getInput()));
+    }
+
+    function buttonNumberToRoman(){        
+        writeResult(jsESnumbers.numberToRoman(getInput()));
+    }
+
+    function buttonRomanToNumber(){        
+        writeResult(jsESnumbers.romanToNumber(getInput()));
+    }
+
+</script>
+
+</head>
+<body>
+<h1>jsESNumbers</h1>
+<br>
+<input id="text"> => <span id="result"></span>
+<br><br>
+<button onclick="buttonCardinalToWords()">Cardinal To Words</button>
+<button onclick="buttonWordsToCardinal()">Words To Cardinal</button>
+<br><br>
+<button onclick="buttonNumberToRoman()">Number To Roman</button>
+<button onclick="buttonRomanToNumber()">Roman To Number</button>
+</body>
+</html>
