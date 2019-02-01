@@ -1,25 +1,33 @@
 <html>
 <head>
-<script src="jsESsyllable.js" charset="UTF-8"></script>
+  <meta charset="UTF-8">
+</head>
+
+<script type="module" charset="UTF-8">
+  import * as jsESsyllable from './jsESsyllable.js';
+  window.jsESsyllable = jsESsyllable;
+</script>
 
 <script>
-var syllable = new jsESsyllable();
+//var syllable = new jsESsyllable();
 
 function divide(){
   var word = document.getElementById('word').value;
-  syllables = syllable.divide(word);
-  strong = syllable.stress(syllables);
+  syllables = jsESsyllable.divide(word);
+  strong = jsESsyllable.stress(syllables);
   document.getElementById('syllables').value = syllables;
   document.getElementById('strong').value = syllables[strong];
+  document.getElementById('difficulty').value = jsESsyllable.difficulty(syllables);
 }
 
 </script>
 </head>
 <body>
 <h1>jsESsyllable</h1>
-Word: <input id="word"> => Syllables: <input id="syllables" readonly="readonly"> Strong: <input id="strong" readonly="readonly">
+Word: <input id="word"> => Syllables: <input id="syllables" readonly="readonly"> Strong: <input id="strong" readonly="readonly"> Difficulty: <input id="difficulty" readonly="readonly">
 <br>
 <br>
 <button onclick="divide()">divide</button>
 </body>
 </html>
+
