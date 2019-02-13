@@ -1,5 +1,10 @@
-
 function jsESnumber(){
+
+  var SIN = 1;
+  var PLU = -1;
+  var BOTH = 0;
+  var NOIDEA = 2;
+
   var pluralRegs = [];
   var pluralReplaces = [];
   var singularRegs = [];
@@ -170,14 +175,14 @@ function jsESnumber(){
     var singular = this.singularOf(word);
 
     if(plural == singular){
-      return 0;
+      return BOTH;
     } else if(plural == word){
-      return 1;
+      return SIN;
     } else if(singular == word){
-      return -1;
+      return PLU;
     }
 
-    return 2;
+    return NOIDEA;
   }
 
   this.addException = function(singular, plural){
@@ -185,6 +190,10 @@ function jsESnumber(){
     singularExceptions[singular] = plural;
   }
 
+  this.addInvariant = function(word){
+    pluralExceptions[word] = word;
+    singularExceptions[word] = word;
+  }
 
   this.addException("a", "aes");
   this.addException("e", "ees");
@@ -195,10 +204,11 @@ function jsESnumber(){
   this.addException("si", "sies");
   this.addException("sí", "síes");
   this.addException("no", "noes");
-  this.addException("este", "estos");
+  this.addException("éste", "éstos");
   this.addException("ese", "esos");
   this.addException("equel", "aquellos");
   this.addException("álbum", "álbumes");
+  this.addException("club", "clubes");  
   this.addException("imán" , "imanes");
   this.addException("yo" , "yoes");
   this.addException("hipérbaton", "hipérbatos");
@@ -212,63 +222,159 @@ function jsESnumber(){
   this.addException("jersey", "jerséis");
   this.addException("panty", "pantis");  
   this.addException("vals", "valses");  
+  this.addException("compás", "compases"); 
+  this.addException("currículo", "currículos");
+  this.addException("record", "records");
+  this.addException("cumpleaños", "cumpleaños");
+  this.addException("paréntesis", "paréntesis");
+  this.addException("danés", "daneses");
+  this.addException("francés", "franceses");
+  this.addException("inglés", "ingleses");
+  this.addException("holandés", "holandeses");
+  this.addException("portugués", "portugueses");
+  this.addException("filandés", "filandeses");
+  this.addException("finés", "fineses");   
+  this.addException("irlandés", "irlandeses");
+  this.addException("galés", "galeses");
+  this.addException("japonés", "japoneses");
+  this.addException("imam", "imames");
+  
+  //mutiples
+  this.addException("bisturí", "bisturís");
+  this.addException("bisturí", "bisturíes");
+  this.addException("tabú", "tabús");
+  this.addException("tabú", "tabúes");
+  this.addException("israelí", "israelí");
+  this.addException("israelí", "israelíes");
 
   //invariantes
-  this.addException("virus", "virus");
-  this.addException("dux", "dux");
-  this.addException("nada", "nada");
-  this.addException("nadie", "nadie");
-  this.addException("pereza", "pereza");
-  this.addException("adolescencia", "adolescencia");
-  this.addException("generosidad", "generosidad");
-  this.addException("pánico", "pánico");
-  this.addException("decrepitud", "decrepitud");
-  this.addException("eternidad", "eternidad");
-  this.addException("caos", "caos");
-  this.addException("paraguas", "paraguas");
-  this.addException("gafas", "gafas");
-  this.addException("víveres", "víveres");
-  this.addException("albricias", "albricias");
-  this.addException("esponsales", "esponsales");
-  this.addException("maitines", "maitines");
-  this.addException("andurriales", "andurriales");
-  this.addException("añicos", "añicos");
-  this.addException("pararrayos", "pararrayos");
-  this.addException("exequias", "exequias");
-  this.addException("enseres", "enseres");
-  this.addException("nupcias", "nupcias");
-  this.addException("creces", "creces");
-  this.addException("trabalenguas", "trabalenguas");
-  this.addException("cascarrabias", "cascarrabias");
-  this.addException("viacrucis", "viacrucis");
-  this.addException("saltamontes", "saltamontes");
-  this.addException("sacacorchos", "sacacorchos");
-  this.addException("lavacoches", "lavacoches");
-  this.addException("paracaídas", "paracaídas");
-  this.addException("pisapapeles", "pisapapeles");
-  this.addException("quitamanchas", "quitamanchas");
-  this.addException("alicates", "alicates");
-  this.addException("fauces", "fauces");
-  this.addException("mondadientes", "mondadientes");
-  this.addException("cortaplumas", "cortaplumas");
-  this.addException("abrelatas", "abrelatas");
-  this.addException("limpiabotas", "limpiabotas");
-  this.addException("cuelgacapas", "cuelgacapas");
-  this.addException("pasapurés", "pasapurés");
-  this.addException("parabrisas", "parabrisas");
-  this.addException("parachoques", "parachoques");
-  this.addException("portaaviones", "portaaviones");
-  this.addException("salvavidas", "salvavidas");
-  this.addException("rompeolas", "rompeolas");
-  this.addException("análisis", "análisis");
-  this.addException("crisis", "crisis");
-  this.addException("síntesis", "síntesis");
-  this.addException("fotosíntesis", "fotosíntesis");
-  this.addException("lunes", "lunes");
-  this.addException("martes", "martes");
-  this.addException("miércoles", "miércoles");
-  this.addException("jueves", "jueves");
-  this.addException("viernes", "viernes");
-  this.addException("tórax", "tórax");
-
+  this.addInvariant("abrebotellas");
+  this.addInvariant("abrecartas");
+  this.addInvariant("abrelatas");
+  this.addInvariant("accésit");
+  this.addInvariant("adolescencia");
+  this.addInvariant("aguafiestas");
+  this.addInvariant("albricias");
+  this.addInvariant("alias");
+  this.addInvariant("andurriales");
+  this.addInvariant("análisis");
+  this.addInvariant("aparcacoches");
+  this.addInvariant("atlas");
+  this.addInvariant("añicos");
+  this.addInvariant("buscavidas");
+  this.addInvariant("bíceps");
+  this.addInvariant("cantamañanas");
+  this.addInvariant("caos");
+  this.addInvariant("caries");
+  this.addInvariant("cariz");
+  this.addInvariant("cascanueces");
+  this.addInvariant("cascarrabias");
+  this.addInvariant("cenit");
+  this.addInvariant("ciempiés");
+  this.addInvariant("clímax");
+  this.addInvariant("correturnos");
+  this.addInvariant("cortaplumas");
+  this.addInvariant("cortapuros");
+  this.addInvariant("cosmos");
+  this.addInvariant("creces");
+  this.addInvariant("crisis");
+  this.addInvariant("crucis");
+  this.addInvariant("cuelgacapas");
+  this.addInvariant("cuelgaplatos");
+  this.addInvariant("cumpleaños");
+  this.addInvariant("cénit");
+  this.addInvariant("decrepitud");
+  this.addInvariant("dosis");
+  this.addInvariant("dux");
+  this.addInvariant("enseres");
+  this.addInvariant("espantapájaros");
+  this.addInvariant("esponsales");
+  this.addInvariant("este");
+  this.addInvariant("eternidad");
+  this.addInvariant("exequias");
+  this.addInvariant("éxtasis");
+  this.addInvariant("fauces");
+  this.addInvariant("fotosíntesis");
+  this.addInvariant("fénix");
+  this.addInvariant("gafas");
+  this.addInvariant("galimatías");
+  this.addInvariant("generosidad");
+  this.addInvariant("grima");
+  this.addInvariant("guardabarros");
+  this.addInvariant("guardacoches");
+  this.addInvariant("guardacostas");
+  this.addInvariant("guardaespaldas");
+  this.addInvariant("génesis");
+  this.addInvariant("hipótesis");
+  this.addInvariant("jueves");
+  this.addInvariant("lanzacohetes");
+  this.addInvariant("lanzallamas");
+  this.addInvariant("lavacoches");
+  this.addInvariant("lavaplatos");
+  this.addInvariant("lavavajillas");
+  this.addInvariant("limpiabotas");
+  this.addInvariant("limpiaparabrisas");
+  this.addInvariant("lunes");
+  this.addInvariant("maitines");
+  this.addInvariant("martes");
+  this.addInvariant("matamoscas");
+  this.addInvariant("matarratas");
+  this.addInvariant("matasanos");
+  this.addInvariant("matasuegras");
+  this.addInvariant("metamorfosis");
+  this.addInvariant("miércoles");
+  this.addInvariant("moisés");
+  this.addInvariant("mondadientes");
+  this.addInvariant("montacargas");
+  this.addInvariant("nada");
+  this.addInvariant("nadie");
+  this.addInvariant("nomeolvides");
+  this.addInvariant("norte");
+  this.addInvariant("nupcias");
+  this.addInvariant("oeste");
+  this.addInvariant("parabrisas");
+  this.addInvariant("paracaídas");
+  this.addInvariant("parachoques");
+  this.addInvariant("paraguas");
+  this.addInvariant("pararrayos");
+  this.addInvariant("pasapurés");
+  this.addInvariant("pelagatos");
+  this.addInvariant("pereza");
+  this.addInvariant("pisapapeles");
+  this.addInvariant("portaaviones");
+  this.addInvariant("portafolios");
+  this.addInvariant("portalámparas");
+  this.addInvariant("portamaletas");
+  this.addInvariant("portamonedas");
+  this.addInvariant("portapapeles");
+  this.addInvariant("pánico");
+  this.addInvariant("quitamanchas");
+  this.addInvariant("quitamiedos");
+  this.addInvariant("quitanieves");
+  this.addInvariant("rascacielos");
+  this.addInvariant("rompecabezas");
+  this.addInvariant("rompeolas");
+  this.addInvariant("sacacorchos");
+  this.addInvariant("sacamuelas");
+  this.addInvariant("sacapuntas");
+  this.addInvariant("saltamontes");
+  this.addInvariant("salud");
+  this.addInvariant("salvavidas");
+  this.addInvariant("salvoconducto");
+  this.addInvariant("sed");
+  this.addInvariant("sur");
+  this.addInvariant("síntesis");
+  this.addInvariant("tesis");
+  this.addInvariant("tez");
+  this.addInvariant("tiralíneas");
+  this.addInvariant("tocadiscos");
+  this.addInvariant("trabalenguas");
+  this.addInvariant("tragaldabas");
+  this.addInvariant("tragaperras");
+  this.addInvariant("traspiés");
+  this.addInvariant("tórax");
+  this.addInvariant("viacrucis");
+  this.addInvariant("viernes");
+  this.addInvariant("virus");
+  this.addInvariant("víveres");
 }
